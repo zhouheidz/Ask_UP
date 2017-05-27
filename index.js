@@ -10,8 +10,8 @@ const QResponse = require('./models').QResponse;
 const Problem = require('./models').Problem;
 const PResponse = require('./models').PResponse;
 
-const routes = './routes/auth-routes'; 
-const google = './routes/google';
+const routes ='./routes/auth-routes';
+// const google = './routes/google';
 
 // app.use(require(routes));
 // app.use(require(google));
@@ -21,14 +21,13 @@ app.engine('html', consolidate.nunjucks);
 app.use('/static', express.static('./static'));
 app.use(bodyparser.urlencoded({extended: true}));
 
-var user = function retrieveSignedInUser(req, res, next) {
-	// req.user = req.session.currentUser;
-	next();
-}
+// var user = function retrieveSignedInUser(req, res, next) {
+// 	req.user = req.session.currentUser;
+// 	next();
+// }
+// app.use(user);
 
-app.use(user);
-
-app.get('/', function(request, response){	
+app.get('/', function(request, response){
 	response.render('index.html', {
 	});
 });

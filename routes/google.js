@@ -12,10 +12,10 @@ router.get('/auth/google', passport.authenticate('google', { scope: [
 
 router.get('/auth/google/callback',
   passport.authenticate('google', {
-        failureRedirect: '/'
+        failureRedirect: '/',
+        failureFlash:true
     }),
     function(req, res) {
-        console.log(req);
         req.session.currentUser = req.user.displayName;
         res.redirect('/home');
     }

@@ -4,6 +4,7 @@ var app  = express();
 
 const bodyparser = require('body-parser');
 const session = require('express-session');
+const flash = require('express-flash');
 const cookieparser = require('cookie-parser');
 const database = require('./database');
 const User = require('./models').User;
@@ -22,6 +23,7 @@ const google = './routes/google';
 
 app.use(require(routes));
 app.use(require(google));
+app.use(flash());
 
 app.set('views', './templates');
 app.engine('html', consolidate.nunjucks);

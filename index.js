@@ -52,26 +52,11 @@ app.get('/submitQ', requireSignedIn, function(req, res){
 	});
 });
 
-<<<<<<< HEAD
 app.get('/submitP', requireSignedIn, function(req, res){
 	res.render('problem.html', {
 	});
 });
 
-
-app.post('/submitQ', requireSignedIn, function(req, res){
-		var name = req.user;
-		var content = req.body.content;
-		User.findOne({ where: { name: name}}).then(function(user){
-			console.log("emailll " + user.email);
-			return Question.create({
-			user_email: user.email,
-			content: content, 
-		}).then(function(){
-			return res.redirect('/home');
-		});
-	});	
-=======
 app.post('/submitQ', requireSignedIn, function(req, res){
 	var name = req.user;
 	var content = req.body.content;
@@ -79,15 +64,12 @@ app.post('/submitQ', requireSignedIn, function(req, res){
 		console.log("emailll " + user.email);
 		return Question.create({
 		user_email: user.email,
-		content: content,
+		content: content, 
 	}).then(function(){
 		return res.redirect('/home');
 	});
 });
-
->>>>>>> 14b2222c29bf598199bea75860bf1fa6d24dfff5
-});
-
+	
 app.post('/submitP', requireSignedIn, function(req, res){
 	var name = req.user;
 	var content = req.body.content;

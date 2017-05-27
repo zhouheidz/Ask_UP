@@ -141,38 +141,41 @@
       <!--main content start-->
       <section id="main-content">
           <section class="wrapper">
-            <form method="post" action="/">
-              <div class="box-content" href="#events_{event_id}" id="events_{event_id}">
-              <div hidden>
-                <input type="text" id="event_id" name="event_id" value = {event_id}/>
-              </div>
-                  <ul class="dashboard-list">
-
-                    <li>
-                                                     
-                      <strong>Timestamp:</strong> {event_id} <br> 
-
-                      <strong>Status:</strong> <span class="label label-warning">Pending</span> <br><br>  
-                      
-                        <button class="btn btn-default edit-event" 
-                         data-title="{title}" data-status="{status}">
-                          <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                        </button>
-                      
-                      <button class="btn btn-danger delete-event" data-id="{event_id}">
-                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 
-                      </a>                                       
-                    </li>
-
-                    <li>
-                  </ul>
-                </div>  
-              </form> 
+              <div class="panel panel-default">
+                  <div class="panel-heading">
+                      <h4 class="panel-title">
+                          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                              Question #1
+                          </a>
+                      </h4>
+                  </div>
+                  <div id="collapseOne" class="panel-collapse collapse in">
+                      <div class="panel-body">
+                          question here
+                          <br><br><br>
+                          <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#basicModal">Reply</a>                                              
+                      </div>                  
+                  </div>
+              </div>  
           </section>
       </section>
       <!--main content end-->
   </section>
   <!-- container section start -->
+<div class="modal fade" id="basicModal" tabindex="-3" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+              <label for="inputReply">Reply</label>
+              <textarea class="form-control" name="content" rows="5" required></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Send</button>
+            </div>
+    </div>
+  </div>
+</div>
 
     <!-- javascripts -->
     <script src="/static/js/jquery.js"></script>

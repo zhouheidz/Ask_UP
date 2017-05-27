@@ -48,47 +48,52 @@ app.get('/answerQ', function(req, res){
 
 
 app.get('/home', requireSignedIn, function(req, res){
+	const email = req.session.currentUser;
 	var name = req.user;
-	User.findOne( {where: {email:name}}).then(function(user) {
+	User.findOne( {where: {email:email}}).then(function(user) {
 		if(user.role === 'admin') {
 			console.log("admin");
 			res.render('sc.html', {
-				name:user.name
+				user:user
 			});
 		} else {
 			console.log("not admin");
 			res.render('home.html', {
-				name:user.name
+				user:user
 			});
 		}
 	});
 });
 
 app.get('/submitQ', requireSignedIn, function(req, res){
-	var name = req.user;
-	res.render('ask.html', {
-		name:name
+	const email = req.session.currentUser;
+	User.findOne({ where: { email: email } }).then(function(user) {
+		console.log("name is: "+user.name);
+		res.render('ask.html', {
+			user: user
+		});
 	});
 });
 
 app.get('/submitP', requireSignedIn, function(req, res){
-	var name = req.user;
-	res.render('problem.html', {
-		name:name
+	const email = req.session.currentUser;
+	User.findOne({ where: { email: email } }).then(function(user) {
+		console.log("name is: "+user.name);
+		res.render('problem.html', {
+			user: user
+		});
 	});
 });
 
 app.post('/submitQ', requireSignedIn, function(req, res){
-	var name = req.user;
+	const email = req.session.currentUser;
 	var content = req.body.content;
 
-
 	if(content) {
-		User.findOne({ where: { name: name}}).then(function(user){
-			console.log("emailll " + user.email);
+		User.findOne({ where: { email: email}}).then(function(user){
 			return Question.create({
-			user_email: user.email,
-			content: content,
+				user_email: email,
+				content: content,
 		}).then(function(){
 			req.flash('statusMessage', 'Question was submitted!');
 			return res.redirect('/submitQ');

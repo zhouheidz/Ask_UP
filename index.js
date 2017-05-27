@@ -42,6 +42,7 @@ app.get('/', function(req, res){
 });
 
 app.get('/home', requireSignedIn, function(req, res){
+	var name = req.user;
 	res.render('home.html', {
 	});
 });
@@ -58,12 +59,12 @@ app.post('/submitQ', requireSignedIn, function(req, res){
 		console.log("emailll " + user.email);
 		return Question.create({
 		user_email: user.email,
-		content: content, 
+		content: content,
 	}).then(function(){
 		return res.redirect('/home');
 	});
 });
-	
+
 });
 
 function requireSignedIn(req, res, next) {

@@ -43,9 +43,18 @@ app.get('/', function(req, res){
 
 app.get('/home', requireSignedIn, function(req, res){
 	var name = req.user;
-	console.log("name is: "+name);
-	res.render('home.html', {
-		name:name
+	User.findOne( {where: {email:name}}).then(function(user) {
+		if(user.role === 'admin') {
+			console.log("admin");
+			res.render('sc.html', {
+				name:user.name
+			});
+		} else {
+			console.log("not admin");
+			res.render('home.html', {
+				name:user.name
+			});
+		}
 	});
 });
 

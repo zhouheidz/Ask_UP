@@ -66,15 +66,22 @@ app.get('/submitP', requireSignedIn, function(req, res){
 app.post('/submitQ', requireSignedIn, function(req, res){
 	var name = req.user;
 	var content = req.body.content;
-	User.findOne({ where: { name: name}}).then(function(user){
-		console.log("emailll " + user.email);
-		return Question.create({
-		user_email: user.email,
-		content: content,
-	}).then(function(){
-		return res.redirect('/home');
-	});
-	});
+
+	if(content) {
+		User.findOne({ where: { name: name}}).then(function(user){
+			console.log("emailll " + user.email);
+			return Question.create({
+			user_email: user.email,
+			content: content,
+		}).then(function(){
+			return res.redirect('/home');
+		});
+		});
+	}
+	else {
+		console.log("EMPTY MESSAGE");
+	}
+
 });
 app.post('/submitP', requireSignedIn, function(req, res){
 	var name = req.user;

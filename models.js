@@ -16,10 +16,12 @@ const User = database.define('users', {
 		values: ['student', 'admin'],
 		allowNull: false
 	},createdAt: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')	
     },
     updatedAt: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
     }
 });
 
@@ -38,7 +40,9 @@ const Question = database.define('questions',{
         }
 	},
 	timestamp: {
-    	type: Sequelize.DATE
+    	type: Sequelize.DATE,
+    	allowNull: false,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
     },
     content:{
     	type: Sequelize.TEXT,
@@ -68,7 +72,9 @@ const QResponse = database.define('qresponses',{
         }
 	},
 	timestamp: {
-    	type: Sequelize.DATE
+    	type: Sequelize.DATE,
+    	allowNull: false,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
     },
     content: {
     	type: Sequelize.TEXT,
@@ -95,7 +101,9 @@ const Problem = database.define('problems',{
         }
 	},
 	timestamp: {
-    	type: Sequelize.DATE
+    	type: Sequelize.DATE,
+    	allowNull: false,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
     },
     content:{
     	type: Sequelize.TEXT,
@@ -135,7 +143,9 @@ const PResponse = database.define('presponses',{
         }
 	},
 	timestamp: {
-    	type: Sequelize.DATE
+    	type: Sequelize.DATE,
+    	allowNull: false,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
     },
     content: {
     	type: Sequelize.TEXT,

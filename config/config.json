@@ -1,0 +1,6 @@
+{
+  "development": {
+    "url": "postgres://valor:valor@localhost:5432/valordb",
+    "dialect": "pg"
+  }
+}

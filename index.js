@@ -13,8 +13,8 @@ const PResponse = require('./models').PResponse;
 const routes = './routes/auth-routes'; 
 const google = './routes/google';
 
-app.use(require(routes));
-app.use(require(google));
+// app.use(require(routes));
+// app.use(require(google));
 
 app.set('views', './templates');
 app.engine('html', consolidate.nunjucks);
@@ -22,7 +22,7 @@ app.use('/static', express.static('./static'));
 app.use(bodyparser.urlencoded({extended: true}));
 
 var user = function retrieveSignedInUser(req, res, next) {
-	req.user = req.session.currentUser;
+	// req.user = req.session.currentUser;
 	next();
 }
 

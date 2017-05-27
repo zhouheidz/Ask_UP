@@ -70,8 +70,8 @@ app.post('/submitQ', requireSignedIn, function(req, res){
 	}).then(function(){
 		return res.redirect('/home');
 	});
+	});
 });
-	
 app.post('/submitP', requireSignedIn, function(req, res){
 	var name = req.user;
 	var content = req.body.content;

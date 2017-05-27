@@ -12,7 +12,8 @@ const User = database.define('users', {
 		allowNull: false
 	},
 	role: {
-		type: Sequelize.STRING,
+		type: Sequelize.ENUM,
+		values: ['student', 'admin'],
 		allowNull: false
 	},createdAt: {
         type: Sequelize.DATE
@@ -101,7 +102,9 @@ const Problem = database.define('problems',{
     	allowNull: false
     },
     category: {
-    	type: Sequelize.STRING,
+    	type: Sequelize.ENUM,
+    	values: ['org-related', 'course-related', 'facility-related', 
+    			'admin-related', 'others'],
     	allowNull: false
     },
     publicity: {

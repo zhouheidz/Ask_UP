@@ -38,6 +38,12 @@ app.get('/home', function(req, res){
 	});
 });
 
+app.get('/ask', function(req, res){
+	res.render('ask.html', {
+	});
+});
+
+
 
 
 function requireSignedIn(req, res, next) {

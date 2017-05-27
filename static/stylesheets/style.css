@@ -6177,7 +6177,10 @@ ul.inbox-pagination li {
 
 }
 
-
+textarea {
+    max-width: 515px; 
+    max-height: 320px;
+}
 
 .inbox-body .modal .modal-body input, .inbox-body .modal .modal-body textarea{
 

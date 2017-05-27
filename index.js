@@ -143,7 +143,19 @@ app.post('/replyQ', requireSignedIn, upload.array('photos', 10), function(req, r
 });
 
 app.post('/replyP', requireSignedIn, upload.array('photos', 10), function(req, res) {
-
+	var email = req.user;
+	var content = req.body.content;
+		Problem.findOne({where: {user_email: email}}).then(function(userProblem){
+			return PResponse.create({
+			user_email: email,
+			q_id: userProblem.id,
+			content: content,
+			image: req.files
+		}).then(function(){
+			req.flash('statusMessage', 'Response has been sent!');
+			return res.redirect('/home');
+		});
+		});
 });
 
 function requireSignedIn(req, res, next) {

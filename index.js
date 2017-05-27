@@ -67,6 +67,7 @@ app.post('/submitQ', requireSignedIn, function(req, res){
 	var name = req.user;
 	var content = req.body.content;
 
+
 	if(content) {
 		User.findOne({ where: { name: name}}).then(function(user){
 			console.log("emailll " + user.email);
@@ -79,7 +80,7 @@ app.post('/submitQ', requireSignedIn, function(req, res){
 		});
 	}
 	else {
-		console.log("EMPTY MESSAGE");
+		console.log("BUTTON WAS PRESSED!");
 	}
 
 });

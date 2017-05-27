@@ -47,6 +47,11 @@ const Question = database.define('questions',{
     content:{
     	type: Sequelize.TEXT,
     	allowNull: false
+    },
+    resolved:{
+        type: Sequelize.BOOLEAN,
+        allowNull: true,
+        defaultValue: false
     }
 });
 
@@ -118,6 +123,11 @@ const Problem = database.define('problems',{
     publicity: {
     	type: Sequelize.BOOLEAN,
     	allowNull: false
+    },
+    resolved:{
+        type: Sequelize.BOOLEAN,
+        allowNull: true,
+        defaultValue: false
     }
 });
 
@@ -154,6 +164,22 @@ const PResponse = database.define('presponses',{
     image: {
     	type: Sequelize.STRING,
     	allowNull: false
+    }
+});
+const Faq = database.define('faq', {
+    id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+        allowNull: false
+    },
+    content: {
+        type: Sequelize.TEXT,
+        allowNull: false
+    },
+    reply: {
+        type: Sequelize.TEXT,
+        allowNull: false
     }
 });
 

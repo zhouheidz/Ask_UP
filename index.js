@@ -22,7 +22,7 @@ app.use('/static', express.static('./static'));
 app.use(bodyparser.urlencoded({extended: true}));
 
 var user = function retrieveSignedInUser(req, res, next) {
-	req.user = req.session.currentUser;
+	// req.user = req.session.currentUser;
 	next();
 }
 

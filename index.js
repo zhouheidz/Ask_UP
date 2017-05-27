@@ -27,18 +27,19 @@ app.use(bodyparser.urlencoded({extended: true}));
 // }
 // app.use(user);
 
-app.get('/', function(request, response){
-	response.render('index.html', {
+app.get('/', function(req, res){
+	res.render('index.html', {
 	});
 });
 
-// function requireSignedIn(req, res, next) {
-//     if (!req.session.currentUser) {
-//         return res.redirect('/');
-//     }
-//     next();
-// }
 
+
+function requireSignedIn(req, res, next) {
+    // if (!req.session.currentUser) {
+    //     return res.redirect('/');
+    // }
+    next();
+}
 app.listen(3000, function(request, response){
 	console.log('Server Listening on port 3000');
 });

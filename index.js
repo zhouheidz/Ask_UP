@@ -49,6 +49,20 @@ app.get('/ask', requireSignedIn, function(req, res){
 	});
 });
 
+app.post('/submitQ', requireSignedIn, function(req, res){
+	var name = req.user;
+	var content = req.body.content;
+	User.findOne({ where: { name: name}}).then(function(user){
+		console.log("emailll " + user.email);
+		return Question.create({
+		user_email: user.email,
+		content: content, 
+	}).then(function(){
+		return res.redirect('/home');
+	});
+});
+	
+});
 
 function requireSignedIn(req, res, next) {
     if (!req.session.currentUser) {

@@ -18,7 +18,7 @@ router.get('/auth/google/callback',
     }),
     function(req, res) {
         req.session.currentUser = req.user.displayName;
-        // res.redirect('/profile');
+        // res.redirect('/');
         res.send(200);
     }
 );

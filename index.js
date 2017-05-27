@@ -13,6 +13,10 @@ const Problem = require('./models').Problem;
 const PResponse = require('./models').PResponse;
 
 const passport = require('./config/passport');
+app.use(cookieparser('secret-cookie'));
+app.use(session({ resave: false, saveUninitialized: false, secret: 'secret-cookie' }));
+app.use(passport.initialize());
+
 const routes ='./routes/auth-routes';
 const google = './routes/google';
 
@@ -23,13 +27,6 @@ app.set('views', './templates');
 app.engine('html', consolidate.nunjucks);
 app.use('/static', express.static('./static'));
 app.use(bodyparser.urlencoded({extended: true}));
-app.use(passport.initialize());
-
-// var user = function retrieveSignedInUser(req, res, next) {
-// 	req.user = req.session.currentUser;
-// 	next();
-// }
-// app.use(user);
 
 app.get('/', function(req, res){
 	res.render('index.html', {

@@ -55,8 +55,15 @@ app.get('/answerQ', function(req, res){
 	});
 });
 
-app.get('/answerP', function(req, res){
-	res.render('answerP.html', {
+app.get('/answerP', requireSignedIn, function(req, res){
+	const email = req.session.currentUser;
+	User.findOne( {where: {email:email}}).then(function(user) {
+		console.log("role : "+user.role);
+		if(user.role === 'admin') {
+			res.render('answerP.html', {
+				user:user
+			});
+		}
 	});
 });
 
@@ -154,7 +161,7 @@ app.post('/replyQ', requireSignedIn, upload.array('photos', 10), function(req, r
 				return res.redirect('/home');
 			});
 		});
-	});	
+	});
 });
 
 

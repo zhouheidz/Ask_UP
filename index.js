@@ -42,31 +42,38 @@ app.get('/', function(req, res){
 });
 
 app.get('/home', requireSignedIn, function(req, res){
-	var name = req.user;
-	console.log("name is: "+name);
-	res.render('home.html', {
-		name:name
+	const email = req.session.currentUser;
+	User.findOne({ where: { email: email } }).then(function(user) {
+		console.log("name is: "+user.name);
+		res.render('home.html', {
+			user: user
+		});
 	});
 });
 
 app.get('/submitQ', requireSignedIn, function(req, res){
-	var name = req.user;
-	res.render('ask.html', {
-		name:name
+	const email = req.session.currentUser;
+	User.findOne({ where: { email: email } }).then(function(user) {
+		console.log("name is: "+user.name);
+		res.render('ask.html', {
+			user: user
+		});
 	});
 });
 
 app.get('/submitP', requireSignedIn, function(req, res){
-	var name = req.user;
-	res.render('problem.html', {
-		name:name
+	const email = req.session.currentUser;
+	User.findOne({ where: { email: email } }).then(function(user) {
+		console.log("name is: "+user.name);
+		res.render('problem.html', {
+			user: user
+		});
 	});
 });
 
 app.post('/submitQ', requireSignedIn, function(req, res){
 	var name = req.user;
 	var content = req.body.content;
-
 
 	if(content) {
 		User.findOne({ where: { name: name}}).then(function(user){

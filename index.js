@@ -13,8 +13,8 @@ const PResponse = require('./models').PResponse;
 const routes = './routes/auth-routes'; 
 const google = './routes/google';
 
-app.use(require(routes));
-app.use(require(google));
+// app.use(require(routes));
+// app.use(require(google));
 
 app.set('views', './templates');
 app.engine('html', consolidate.nunjucks);

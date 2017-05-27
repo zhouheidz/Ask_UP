@@ -88,11 +88,13 @@ app.post('/submitP', requireSignedIn, function(req, res){
 	var content = req.body.content;
 	var category = req.body.category;
 	var publicity = req.body.publicity;
+	if(publicity != undefined){
+		publicity = true;
+	}
+	else{
+		publicity = false;
+	}
 	User.findOne({where: { name: name}}).then(function(user){
-		console.log("emailll " + user.email);
-		console.log("content " + content);
-		console.log("category " + category);
-		console.log("publicity " + publicity);
 		return Problem.create({
 			user_email: user.email,
 			content: content,

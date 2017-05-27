@@ -84,8 +84,7 @@ app.post('/submitQ', requireSignedIn, function(req, res){
 	var content = req.body.content;
 
 	if(content) {
-		User.findOne({ where: { email: email}}).then(function(user){
-			return Question.create({
+		Question.create({
 				user_email: email,
 				content: content,
 		}).then(function(){

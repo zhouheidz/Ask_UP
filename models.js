@@ -14,7 +14,12 @@ const User = database.define('users', {
 	role: {
 		type: Sequelize.STRING,
 		allowNull: false
-	}
+	},createdAt: {
+        type: Sequelize.DATE
+    },
+    updatedAt: {
+        type: Sequelize.DATE
+    }
 });
 
 const Question = database.define('questions',{
@@ -25,7 +30,7 @@ const Question = database.define('questions',{
 		allowNull: false
 	},
 	user_email: {
-		type: Sequelize.STRING
+		type: Sequelize.STRING,
 		references: {
             model: 'users',
             key: 'email'
@@ -48,14 +53,14 @@ const QResponse = database.define('qresponses',{
 		allowNull: false
 	},
 	user_email: {
-		type: Sequelize.STRING
+		type: Sequelize.STRING,
 		references: {
             model: 'users',
             key: 'email'
         }
 	},
 	q_id:{
-		type: Sequelize.INTEGER
+		type: Sequelize.INTEGER,
 		references: {
             model: 'questions',
             key: 'id'
@@ -69,7 +74,7 @@ const QResponse = database.define('qresponses',{
     	allowNull: false
     },
     image: {
-    	type: DataTypes.STRING,
+    	type: Sequelize.ARRAY(Sequelize.STRING),
     	allowNull: false
     }
 });
@@ -82,7 +87,7 @@ const Problem = database.define('problems',{
 		allowNull: false
 	},
 	user_email: {
-		type: Sequelize.STRING
+		type: Sequelize.STRING,
 		references: {
             model: 'users',
             key: 'email'
@@ -94,13 +99,13 @@ const Problem = database.define('problems',{
     content:{
     	type: Sequelize.TEXT,
     	allowNull: false
-    }
+    },
     category: {
-    	type: Sequelize.String,
+    	type: Sequelize.STRING,
     	allowNull: false
-    }
+    },
     publicity: {
-    	type: sequelize.BOOLEAN,
+    	type: Sequelize.BOOLEAN,
     	allowNull: false
     }
 });
@@ -113,14 +118,14 @@ const PResponse = database.define('presponses',{
 		allowNull: false
 	},
 	user_email: {
-		type: Sequelize.STRING
+		type: Sequelize.STRING,
 		references: {
             model: 'users',
             key: 'email'
         }
 	},
 	q_id:{
-		type: Sequelize.INTEGER
+		type: Sequelize.INTEGER,
 		references: {
             model: 'problems',
             key: 'id'
@@ -134,7 +139,7 @@ const PResponse = database.define('presponses',{
     	allowNull: false
     },
     image: {
-    	type: DataTypes.STRING,
+    	type: Sequelize.STRING,
     	allowNull: false
     }
 });

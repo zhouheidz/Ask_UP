@@ -9,18 +9,24 @@ passport.use(new GoogleStrategy({
     passReqToCallback   : true
   },
   function(request, accessToken, refreshToken, profile, done) {
-    process.nextTick(function () {
-        console.log(request);
-    User.findOrCreate({
-        where: { 
-            email: profile.emails[0].value,
-            name: profile.displayName 
-        }, defaults: { 
-            role: 'student' 
-        }
-    })
-      return done(null, profile);
-    });
+    const email = profile.emails[0].value;
+    var fields = email.split('@');
+    console.log(fields[1]);
+    if(fields[1] !== "up.edu.ph") {
+      done(new Error("Please use UP Mail"));
+    } else {
+        process.nextTick(function () {
+        User.findOrCreate({
+            where: { 
+                email: profile.emails[0].value,
+                name: profile.displayName 
+            }, defaults: { 
+                role: 'student' 
+            }
+        })
+          return done(null, profile);
+        });
+    }
   }
 ));
 

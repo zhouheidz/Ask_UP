@@ -130,10 +130,11 @@ app.post('/replyQ', requireSignedIn, upload.array('photos', 10), function(req, r
 	var email = req.user;
 	var content = req.body.content;
 		Question.findOne({where: {user_email: email}}).then(function(userQuestion){
-			return Problem.create({
+			return QResponse.create({
 			user_email: email,
 			q_id: userQuestion.id,
-			content: content
+			content: content,
+			image: req.files
 		}).then(function(){
 			req.flash('statusMessage', 'Response has been sent!');
 			return res.redirect('/home');

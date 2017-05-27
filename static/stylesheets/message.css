@@ -119,16 +119,17 @@ body {
 }
 .chat .chat-message button {
   float: right;
-  color: #94C2ED;
+  color: white;
   font-size: 16px;
   text-transform: uppercase;
   border: none;
   cursor: pointer;
   font-weight: bold;
-  background: #F2F5F8;
+  background: maroon;
+  margin: 2px;
 }
 .chat .chat-message button:hover {
-  color: #75b1e8;
+  color: #330000;
 }
 
 .online, .offline, .me {

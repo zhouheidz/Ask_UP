@@ -50,6 +50,10 @@ app.get('/answerQ', function(req, res){
 	});
 });
 
+app.get('/answerP', function(req, res){
+	res.render('answerP.html', {
+	});
+});
 
 app.get('/home', requireSignedIn, function(req, res){
 	const email = req.session.currentUser;

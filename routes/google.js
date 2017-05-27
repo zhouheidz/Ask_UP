@@ -16,7 +16,8 @@ router.get('/auth/google/callback',
         failureFlash:true
     }),
     function(req, res) {
-        req.session.currentUser = req.user.displayName;
+        req.session.currentUser = req.user.emails[0].value;
+        console.log(req.session.currentUser);
         res.redirect('/home');
     }
 );

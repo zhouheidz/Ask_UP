@@ -91,11 +91,9 @@ app.post('/submitQ', requireSignedIn, function(req, res){
 			req.flash('statusMessage', 'Question was submitted!');
 			return res.redirect('/submitQ');
 		});
-		});
 	}
-
-
 });
+
 app.post('/submitP', requireSignedIn, function(req, res){
 	var name = req.user;
 	var content = req.body.content;

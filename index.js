@@ -98,7 +98,7 @@ app.post('/submitQ', requireSignedIn, function(req, res){
 });
 
 app.post('/submitP', requireSignedIn, function(req, res){
-	var name = req.user;
+	var email = req.user;
 	var content = req.body.content;
 	var category = req.body.category;
 	var publicity = req.body.publicity;
@@ -108,16 +108,14 @@ app.post('/submitP', requireSignedIn, function(req, res){
 	else{
 		publicity = false;
 	}
-	User.findOne({where: { name: name}}).then(function(user){
-		return Problem.create({
-			user_email: user.email,
-			content: content,
-			category: category,
-			publicity: publicity
+	return Problem.create({
+		user_email: user.email,
+		content: content,
+		category: category,
+		publicity: publicity
 	}).then(function(){
 		req.flash('statusMessage', 'Your problem has been sent to the Student Council!');
 		return res.redirect('/home');
-	});
 	});
 });
 

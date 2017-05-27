@@ -154,7 +154,7 @@
                               <form role="form" action="/submitP" method="post">
                                   <div class="form-group">
                                       <label for="problem">Problem</label>
-                                      <textarea class="form-control" name="content" rows="5"></textarea>
+                                      <textarea class="form-control" name="content" rows="5" required></textarea>
                                       <label for="problem" >Category</label>
                                       <select class="form-control input-sm m-bot15" id="category" name="category">
                                           <option>org-related</option>
@@ -172,6 +172,7 @@
 
                                   </div>
                                   <button type="submit" class="btn btn-primary">Submit</button>
+                                  <p><br><br><b> {{messages.statusMessage}} </b></p>
                               </form>
 
                           </div>

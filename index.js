@@ -28,6 +28,12 @@ app.engine('html', consolidate.nunjucks);
 app.use('/static', express.static('./static'));
 app.use(bodyparser.urlencoded({extended: true}));
 
+var user = function  retrieveSignedInUser(req, res, next){
+	req.user = req.session.currentUser;
+	next();
+}
+app.use(user);
+
 app.get('/', function(req, res){
 	res.render('index.html', {
 	});
@@ -43,18 +49,14 @@ app.get('/ask', function(req, res){
 	});
 });
 
-app.get('/signout', function(req, res) {
-	req.session.destroy();
-	res.redirect('/');
-});
-
 
 function requireSignedIn(req, res, next) {
-    // if (!req.session.currentUser) {
-    //     return res.redirect('/');
-    // }
+    if (!req.session.currentUser) {
+        return res.redirect('/');
+    }
     next();
 }
+
 app.listen(3000, function(request, response){
 	console.log('Server Listening on port 3000');
 });

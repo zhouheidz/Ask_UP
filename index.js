@@ -71,6 +71,42 @@ app.post('/submitQ', requireSignedIn, function(req, res){
 	});	
 });
 
+app.post('/submitP', requireSignedIn, function(req, res){
+	var name = req.user;
+	var content = req.body.content;
+	var category = req.body.category;
+	var publicity = req.body.publicity;
+	User.findOne({where: { name: name}}).then(function(user){
+		return Problem.create({
+			user_email: user.email,
+			content: content, 
+			category: category,
+			publicity: publicity
+	}).then(function(){
+		req.flash('statusMessage', 'Your problem has been sent to the Student Council!');
+		return res.redirect('/home');
+	});
+	});	
+});
+
+app.post('/submitQR', requireSignedIn, function(req, res){
+	var name = req.user;
+	var content = req.body.content;
+	User.findOne({where: { name: name}}).then(function(user){
+		Question.findOne({where: {user_email: user.mail}}).then(function(userQuestion){
+			return Problem.create({
+			user_email: user.email,
+			q_id: userQuestion.id,
+			content: content
+		}).then(function(){
+			req.flash('statusMessage', 'Response has been sent!');
+			return res.redirect('/home');
+		});
+		});
+	});
+			
+});
+
 function requireSignedIn(req, res, next) {
     if (!req.session.currentUser) {
         return res.redirect('/');

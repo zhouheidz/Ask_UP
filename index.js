@@ -115,7 +115,7 @@ app.post('/submitP', requireSignedIn, function(req, res){
 		publicity: publicity
 	}).then(function(){
 		req.flash('statusMessage', 'Your problem has been sent to the Student Council!');
-		return res.redirect('/home');
+		return res.redirect('/submitP');
 	});
 });
 

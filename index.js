@@ -43,7 +43,10 @@ app.get('/ask', function(req, res){
 	});
 });
 
-
+app.get('/signout', function(req, res) {
+	req.session.destroy();
+	res.redirect('/');
+});
 
 
 function requireSignedIn(req, res, next) {

@@ -75,13 +75,12 @@ app.post('/submitQ', requireSignedIn, function(req, res){
 			user_email: user.email,
 			content: content,
 		}).then(function(){
-			return res.redirect('/home');
+			req.flash('statusMessage', 'Question was submitted!');
+			return res.redirect('/submitQ');
 		});
 		});
 	}
-	else {
-		console.log("BUTTON WAS PRESSED!");
-	}
+
 
 });
 app.post('/submitP', requireSignedIn, function(req, res){

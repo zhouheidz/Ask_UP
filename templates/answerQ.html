@@ -21,10 +21,6 @@
     <link href="/static/stylesheets/style-responsive.css" rel="stylesheet" />
     <link href="/static/stylesheets/xcharts.min.css" rel=" stylesheet">
     <link href="/static/stylesheets/jquery-ui-1.10.4.min.css" rel="stylesheet">
-
-    <!-- Timeline -->
-    <link href="/static/stylesheets/timeline.css" rel="stylesheet">
-
   </head>
 
   <body>
@@ -37,7 +33,7 @@
             </div>
 
             <!--hi people-->
-            <a href="index.html" class="logo">HI <span class="lite">{{name}}</span></a>
+            <a href="/signout" class="logo">HI <span class="lite">{{name}}</span></a>
             <!--end-->
 
             <div class="top-nav notification-row">
@@ -81,7 +77,7 @@
                                 <a href="#"><i class="icon_mail_alt"></i> My Inbox</a>
                             </li>
                             <li>
-                                <a href="/signout"><i class="icon_key_alt"></i> Log Out</a>
+                                <a href="login.html"><i class="icon_key_alt"></i> Log Out</a>
                             </li>
                         </ul>
                     </li>
@@ -119,9 +115,7 @@
                       <a class="" href="/">
                           <i class="icon_documents_alt"></i>
                           <span>FAQ </span>
-
                       </a>
-
                   </li>
 
                   <li class="sub-menu">
@@ -138,8 +132,6 @@
                           <li><a class="" href="/">Others </a></li>
                       </ul>
                   </li>
-
-
               </ul>
               <!-- sidebar menu end-->
           </div>
@@ -149,40 +141,33 @@
       <!--main content start-->
       <section id="main-content">
           <section class="wrapper">
-            <section class="timeline">
-              <ul>
-                <li>
-                  <div>
-                    <time>TIME</time> MESSAGE
-                  </div>
-                </li>
-                <li>
-                  <div>
-                    <time>TIME</time> MESSAGE
-                  </div>
-                </li>
-                <li>
-                  <div>
-                    <time>TIME</time> MESSAGE
-                  </div>
-                </li>
-                <li>
-                  <div>
-                    <time>TIME</time> MESSAGE
-                  </div>
-                </li>
-                <li>
-                  <div>
-                    <time>TIME</time> MESSAGE
-                  </div>
-                </li>
-                <li>
-                  <div>
-                    <time>TIME</time> MESSAGE
-                  </div>
-                </li>
-              </ul>
-            </section>
+            <form method="post" action="/">
+              <div class="box-content" href="#events_{event_id}" id="events_{event_id}">
+              <div hidden>
+                <input type="text" id="event_id" name="event_id" value = {event_id}/>
+              </div>
+                  <ul class="dashboard-list">
+
+                    <li>
+                                                     
+                      <strong>Timestamp:</strong> {event_id} <br> 
+
+                      <strong>Status:</strong> <span class="label label-warning">Pending</span> <br><br>  
+                      
+                        <button class="btn btn-default edit-event" 
+                         data-title="{title}" data-status="{status}">
+                          <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                        </button>
+                      
+                      <button class="btn btn-danger delete-event" data-id="{event_id}">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 
+                      </a>                                       
+                    </li>
+
+                    <li>
+                  </ul>
+                </div>  
+              </form> 
           </section>
       </section>
       <!--main content end-->
@@ -190,7 +175,6 @@
   <!-- container section start -->
 
     <!-- javascripts -->
-    <script src="/static/js/timeline.js"></script>
     <script src="/static/js/jquery.js"></script>
     <script src="/static/js/jquery-ui-1.10.4.min.js"></script>
     <script src="/static/js/jquery-1.8.3.min.js"></script>

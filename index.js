@@ -41,6 +41,12 @@ app.get('/', function(req, res){
 	});
 });
 
+app.get('/answerQ', function(req, res){
+	res.render('answerQ.html', {
+	});
+});
+
+
 app.get('/home', requireSignedIn, function(req, res){
 	var name = req.user;
 	User.findOne( {where: {email:name}}).then(function(user) {

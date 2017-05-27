@@ -50,12 +50,16 @@ app.get('/home', requireSignedIn, function(req, res){
 });
 
 app.get('/submitQ', requireSignedIn, function(req, res){
+	var name = req.user;
 	res.render('ask.html', {
+		name:name
 	});
 });
 
 app.get('/submitP', requireSignedIn, function(req, res){
+	var name = req.user;
 	res.render('problem.html', {
+		name:name
 	});
 });
 
@@ -66,7 +70,7 @@ app.post('/submitQ', requireSignedIn, function(req, res){
 		console.log("emailll " + user.email);
 		return Question.create({
 		user_email: user.email,
-		content: content, 
+		content: content,
 	}).then(function(){
 		return res.redirect('/home');
 	});

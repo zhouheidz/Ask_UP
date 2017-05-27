@@ -6,20 +6,20 @@
 
     <title>Hoy</title>
 
-    <!-- Bootstrap CSS -->    
+    <!-- Bootstrap CSS -->
     <link href="/static/stylesheets/bootstrap.min.css" rel="stylesheet">
     <!-- bootstrap theme -->
     <link href="/static/stylesheets/bootstrap-theme.css" rel="stylesheet">
     <!--external css-->
     <!-- font icon -->
     <link href="/static/stylesheets/elegant-icons-style.css" rel="stylesheet" />
-    <link href="/static/stylesheets/font-awesome.min.css" rel="stylesheet" />    
+    <link href="/static/stylesheets/font-awesome.min.css" rel="stylesheet" />
 
     <!-- Custom styles -->
     <link href="/static/stylesheets/widgets.css" rel="stylesheet">
     <link href="/static/stylesheets/style.css" rel="stylesheet">
     <link href="/static/stylesheets/style-responsive.css" rel="stylesheet" />
-    <link href="/static/stylesheets/xcharts.min.css" rel=" stylesheet"> 
+    <link href="/static/stylesheets/xcharts.min.css" rel=" stylesheet">
     <link href="/static/stylesheets/jquery-ui-1.10.4.min.css" rel="stylesheet">
   </head>
 
@@ -33,10 +33,10 @@
             </div>
 
             <!--hi people-->
-            <a href="index.html" class="logo">HI <span class="lite">USER</span></a>
+            <a href="index.html" class="logo">HI <span class="lite">{{name}}</span></a>
             <!--end-->
 
-            <div class="top-nav notification-row">                
+            <div class="top-nav notification-row">
                 <!-- notificatoin dropdown start-->
                 <ul class="nav pull-right top-menu">
 
@@ -69,7 +69,7 @@
                     <!-- user login dropdown start-->
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="username">NAME</span>
+                            <span class="username">{{name}}</span>
                         </a>
                         <ul class="dropdown-menu extended logout">
                             <div class="log-arrow-up"></div>
@@ -85,7 +85,7 @@
                 </ul>
                 <!-- notificatoin dropdown end-->
             </div>
-      </header>      
+      </header>
       <!--header end-->
 
       <!--sidebar start-->
@@ -110,7 +110,7 @@
                           <i class="icon_desktop"></i>
                           <span>Send Problem</span>
                       </a>
-                  </li>               
+                  </li>
                   <li>
                       <a class="" href="/">
                           <i class="icon_documents_alt"></i>
@@ -141,10 +141,10 @@
           </div>
       </aside>
       <!--sidebar end-->
-      
+
       <!--main content start-->
       <section id="main-content">
-          <section class="wrapper">            
+          <section class="wrapper">
                  <div class="col-lg-6">
                       <section class="panel">
                           <header class="panel-heading">
@@ -164,8 +164,8 @@
                                       <label>
                                           <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
                                           To Publicize?
-                                      </label>                                      
-                                      </select> 
+                                      </label>
+                                      </select>
 
                                   </div>
                                   <button type="submit" class="btn btn-primary">Submit</button>
@@ -205,11 +205,11 @@
     <script src="/static/js/xcharts.min.js"></script>
     <script src="/static/js/jquery.autosize.min.js"></script>
     <script src="/static/js/jquery.placeholder.min.js"></script>
-    <script src="/static/js/gdp-data.js"></script>  
+    <script src="/static/js/gdp-data.js"></script>
     <script src="/static/js/morris.min.js"></script>
-    <script src="/static/js/sparklines.js"></script>  
+    <script src="/static/js/sparklines.js"></script>
     <script src="/static/js/charts.js"></script>
     <script src="/static/js/jquery.slimscroll.min.js"></script>
- 
+
   </body>
 </html>

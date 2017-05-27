@@ -42,12 +42,28 @@ app.get('/', function(req, res){
 });
 
 app.get('/home', requireSignedIn, function(req, res){
+<<<<<<< HEAD
 	const email = req.session.currentUser;
 	User.findOne({ where: { email: email } }).then(function(user) {
 		console.log("name is: "+user.name);
 		res.render('home.html', {
 			user: user
 		});
+=======
+	var name = req.user;
+	User.findOne( {where: {email:name}}).then(function(user) {
+		if(user.role === 'admin') {
+			console.log("admin");
+			res.render('sc.html', {
+				name:user.name
+			});
+		} else {
+			console.log("not admin");
+			res.render('home.html', {
+				name:user.name
+			});
+		}
+>>>>>>> 78fb5814fd75d2ea369b26c4ae494012b5e96b72
 	});
 });
 

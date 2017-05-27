@@ -12,6 +12,9 @@ const Question = require('./models').Question;
 const QResponse = require('./models').QResponse;
 const Problem = require('./models').Problem;
 const PResponse = require('./models').PResponse;
+const multer = require('multer');
+app.use('/pictures', express.static('./uploads'));
+var upload = multer({dest: './uploads'});
 
 const passport = require('./config/passport');
 app.use(cookieparser('secret-cookie'));
@@ -133,6 +136,14 @@ app.post('/submitQR', requireSignedIn, function(req, res){
 		});
 		});
 	});
+
+});
+
+app.post('/replyQ', requireSignedIn, upload.array('photos', 10), function(req, res) {
+
+});
+
+app.post('/replyP', requireSignedIn, upload.array('photos', 10), function(req, res) {
 
 });
 

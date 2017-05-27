@@ -16,6 +16,7 @@ const PResponse = require('./models').PResponse;
 const passport = require('./config/passport');
 app.use(cookieparser('secret-cookie'));
 app.use(session({ resave: false, saveUninitialized: false, secret: 'secret-cookie' }));
+app.use(flash());
 app.use(passport.initialize());
 
 const routes ='./routes/auth-routes';
@@ -23,7 +24,6 @@ const google = './routes/google';
 
 app.use(require(routes));
 app.use(require(google));
-app.use(flash());
 
 app.set('views', './templates');
 app.engine('html', consolidate.nunjucks);

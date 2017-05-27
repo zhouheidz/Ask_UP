@@ -1,5 +1,6 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuthStrategy;
+const User = require('../models').User;
 
 passport.use(new GoogleStrategy({
     consumerKey: '1084488263408-p4k612ctk3mpsulfr9fpskuqde9fvjgp.apps.googleusercontent.com',

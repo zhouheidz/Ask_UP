@@ -1,10 +1,11 @@
 const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth').OAuthStrategy;
+const GoogleStrategy = require('passport-google-oauth2').Strategy;
+const TwitterPassport = require('passport-twitter');
 const User = require('../models').User;
 
 passport.use(new GoogleStrategy({
-    consumerKey: '1084488263408-p4k612ctk3mpsulfr9fpskuqde9fvjgp.apps.googleusercontent.com',
-    consumerSecret: 'N7562kTaTFU8vqdGiE3UIYLF',
+    clientID: '1084488263408-p4k612ctk3mpsulfr9fpskuqde9fvjgp.apps.googleusercontent.com',
+    clientSecret: 'N7562kTaTFU8vqdGiE3UIYLF',
     callbackURL: 'http://localhost:3000/auth/google/callback',
     passReqToCallback   : true
   },
@@ -15,22 +16,12 @@ passport.use(new GoogleStrategy({
             email: profile.emails[0].value,
             name: profile.displayName 
         }, defaults: { 
-            password: '' 
+            role: 'student' 
         }
     })
       return done(null, profile);
     });
   }
 ));
-
-passport.serializeUser(function(user, done) {
-    done(null, user.id);
-});
-
-passport.deserializeUser(function(id, done) {
-    User.findOne({ where: { id: id } }).then(function(user) {
-        done(null, user);
-    });
-});
 
 module.exports = passport;

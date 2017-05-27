@@ -3,7 +3,6 @@ const passport = require('../config/passport');
 const User = require('../models').User;
 const router = new express.Router();
 
-
 router.get('/auth/google', passport.authenticate('google', { scope: [
        'https://www.googleapis.com/auth/plus.login',
        'https://www.googleapis.com/auth/userinfo.profile',
@@ -19,7 +18,8 @@ router.get('/auth/google/callback',
     }),
     function(req, res) {
         req.session.currentUser = req.user.displayName;
-        res.redirect('/profile');
+        // res.redirect('/profile');
+        res.send(200);
     }
 );
 

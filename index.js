@@ -46,9 +46,17 @@ app.get('/', function(req, res){
 });
 
 app.get('/answerQ', function(req, res){
+	var qna = {};
 	Question.findAll({
 		where: {resolved:'f'}
 	}).then(function(question) {
+		for(var i = 0; i < question.size(); i++) {
+			QResponse.findAll({
+				where:{id:question[i].id}
+			}).then(function(qresponse) {
+				qna[i] = {question:question[i].content, answer:qresponse.content}
+			});
+		}
 		res.render('answerQ.html', {
 			question:question
 		});

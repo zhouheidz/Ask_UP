@@ -109,7 +109,7 @@ app.post('/submitP', requireSignedIn, function(req, res){
 		publicity = false;
 	}
 	return Problem.create({
-		user_email: user.email,
+		user_email: email,
 		content: content,
 		category: category,
 		publicity: publicity
@@ -119,13 +119,13 @@ app.post('/submitP', requireSignedIn, function(req, res){
 	});
 });
 
-app.post('/submitQR', requireSignedIn, function(req, res){
-	var name = req.user;
+
+app.post('/replyQ', requireSignedIn, upload.array('photos', 10), function(req, res) {
+	var email = req.user;
 	var content = req.body.content;
-	User.findOne({where: { name: name}}).then(function(user){
-		Question.findOne({where: {user_email: user.mail}}).then(function(userQuestion){
+		Question.findOne({where: {user_email: email}}).then(function(userQuestion){
 			return Problem.create({
-			user_email: user.email,
+			user_email: email,
 			q_id: userQuestion.id,
 			content: content
 		}).then(function(){
@@ -133,12 +133,6 @@ app.post('/submitQR', requireSignedIn, function(req, res){
 			return res.redirect('/home');
 		});
 		});
-	});
-
-});
-
-app.post('/replyQ', requireSignedIn, upload.array('photos', 10), function(req, res) {
-
 });
 
 app.post('/replyP', requireSignedIn, upload.array('photos', 10), function(req, res) {

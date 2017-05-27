@@ -148,7 +148,7 @@ app.post('/replyP', requireSignedIn, upload.array('photos', 10), function(req, r
 		Problem.findOne({where: {user_email: email}}).then(function(userProblem){
 			return PResponse.create({
 			user_email: email,
-			q_id: userProblem.id,
+			p_id: userProblem.id,
 			content: content,
 			image: req.files
 		}).then(function(){

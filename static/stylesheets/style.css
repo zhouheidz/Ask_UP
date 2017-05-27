@@ -6190,12 +6190,17 @@ textarea {
 
 }
 
+/*.btn-primary, .btn-primary:active, .btn-primary:visited {
+    background-color: #4d0000 !important;
+}
 
+.btn-primary:hover {
+    background-color: #fff !important;    
+}*/
 
 .btn-send, .btn-send:hover {
 
     background: #00A8B3;
-
     color: #fff;
 
 }

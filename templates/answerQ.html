@@ -141,6 +141,7 @@
       <!--sidebar end-->
 
       <!--main content start-->
+      {%for question in question%}
       <section id="main-content">
           <section class="wrapper">
               <div class="row">
@@ -165,7 +166,7 @@
                                               <span class="message-data-name" >{SC NAME}</span>
                                             </div>
                                             <div class="message other-message float-right">
-                                              MESSAGE
+                                              {{question.content}}
                                             </div>
                                           </li>
                                           
@@ -197,6 +198,7 @@
             </div>
           </section>
       </section>
+      {%endfor%}
       <!--main content end-->
   </section>
   <!-- container section start -->

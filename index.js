@@ -46,7 +46,12 @@ app.get('/', function(req, res){
 });
 
 app.get('/answerQ', function(req, res){
-	res.render('answerQ.html', {
+	Question.findAll({
+		where: {resolved:'f'}
+	}).then(function(question) {
+		res.render('answerQ.html', {
+			question:question
+		});
 	});
 });
 

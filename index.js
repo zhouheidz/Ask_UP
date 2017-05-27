@@ -39,12 +39,12 @@ app.get('/', function(req, res){
 	});
 });
 
-app.get('/home', function(req, res){
+app.get('/home', requireSignedIn, function(req, res){
 	res.render('home.html', {
 	});
 });
 
-app.get('/ask', function(req, res){
+app.get('/ask', requireSignedIn, function(req, res){
 	res.render('ask.html', {
 	});
 });

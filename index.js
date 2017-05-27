@@ -43,7 +43,9 @@ app.get('/', function(req, res){
 
 app.get('/home', requireSignedIn, function(req, res){
 	var name = req.user;
+	console.log("name is: "+name);
 	res.render('home.html', {
+		name:name
 	});
 });
 
@@ -75,14 +77,14 @@ app.post('/submitP', requireSignedIn, function(req, res){
 	User.findOne({where: { name: name}}).then(function(user){
 		return Problem.create({
 			user_email: user.email,
-			content: content, 
+			content: content,
 			category: category,
 			publicity: publicity
 	}).then(function(){
 		req.flash('statusMessage', 'Your problem has been sent to the Student Council!');
 		return res.redirect('/home');
 	});
-	});	
+	});
 });
 
 app.post('/submitQR', requireSignedIn, function(req, res){
@@ -100,7 +102,7 @@ app.post('/submitQR', requireSignedIn, function(req, res){
 		});
 		});
 	});
-			
+
 });
 
 function requireSignedIn(req, res, next) {

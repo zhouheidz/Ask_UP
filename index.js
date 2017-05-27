@@ -108,11 +108,11 @@ app.post('/submitP', requireSignedIn, function(req, res){
 	else{
 		publicity = false;
 	}
-		return Problem.create({
-			user_email: user.email,
-			content: content,
-			category: category,
-			publicity: publicity
+	return Problem.create({
+		user_email: user.email,
+		content: content,
+		category: category,
+		publicity: publicity
 	}).then(function(){
 		req.flash('statusMessage', 'Your problem has been sent to the Student Council!');
 		return res.redirect('/home');

@@ -11,9 +11,10 @@ passport.use(new GoogleStrategy({
   function(request, accessToken, refreshToken, profile, done) {
     const email = profile.emails[0].value;
     var fields = email.split('@');
-    console.log(fields[1]);
     if(fields[1] !== "up.edu.ph") {
-      done(new Error("Please use UP Mail"));
+      return done(null, false, request.flash('errorMessage','Please use UP Mail'));
+      // request.flash('errorMessage', 'Please use UP Mail');
+      // return res.redirect('/');
     } else {
         process.nextTick(function () {
         User.findOrCreate({

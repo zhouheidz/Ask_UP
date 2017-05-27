@@ -6,25 +6,21 @@
 
     <title>Hoy</title>
 
-    <!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS -->    
     <link href="/static/stylesheets/bootstrap.min.css" rel="stylesheet">
     <!-- bootstrap theme -->
     <link href="/static/stylesheets/bootstrap-theme.css" rel="stylesheet">
     <!--external css-->
     <!-- font icon -->
     <link href="/static/stylesheets/elegant-icons-style.css" rel="stylesheet" />
-    <link href="/static/stylesheets/font-awesome.min.css" rel="stylesheet" />
+    <link href="/static/stylesheets/font-awesome.min.css" rel="stylesheet" />    
 
     <!-- Custom styles -->
     <link href="/static/stylesheets/widgets.css" rel="stylesheet">
     <link href="/static/stylesheets/style.css" rel="stylesheet">
     <link href="/static/stylesheets/style-responsive.css" rel="stylesheet" />
-    <link href="/static/stylesheets/xcharts.min.css" rel=" stylesheet">
+    <link href="/static/stylesheets/xcharts.min.css" rel=" stylesheet"> 
     <link href="/static/stylesheets/jquery-ui-1.10.4.min.css" rel="stylesheet">
-    
-    <!-- Timeline -->
-    <link href="/static/stylesheets/timeline.css" rel="stylesheet"> 
-
   </head>
 
   <body>
@@ -40,7 +36,7 @@
             <a href="index.html" class="logo">HI <span class="lite">USER</span></a>
             <!--end-->
 
-            <div class="top-nav notification-row">
+            <div class="top-nav notification-row">                
                 <!-- notificatoin dropdown start-->
                 <ul class="nav pull-right top-menu">
 
@@ -81,7 +77,7 @@
                                 <a href="#"><i class="icon_mail_alt"></i> My Inbox</a>
                             </li>
                             <li>
-                                <a href="/signout"><i class="icon_key_alt"></i> Log Out</a>
+                                <a href="login.html"><i class="icon_key_alt"></i> Log Out</a>
                             </li>
                         </ul>
                     </li>
@@ -89,7 +85,7 @@
                 </ul>
                 <!-- notificatoin dropdown end-->
             </div>
-      </header>
+      </header>      
       <!--header end-->
 
       <!--sidebar start-->
@@ -114,7 +110,7 @@
                           <i class="icon_desktop"></i>
                           <span>Send Problem</span>
                       </a>
-                  </li>              
+                  </li>               
                   <li>
                       <a class="" href="/">
                           <i class="icon_documents_alt"></i>
@@ -145,44 +141,27 @@
           </div>
       </aside>
       <!--sidebar end-->
-
+      
       <!--main content start-->
       <section id="main-content">
-          <section class="wrapper">
-            <section class="timeline">
-              <ul>
-                <li>
-                  <div>
-                    <time>TIME</time> MESSAGE
+          <section class="wrapper">            
+                 <div class="col-lg-6">
+                      <section class="panel">
+                          <header class="panel-heading">
+                              Address a Problem
+                          </header>
+                          <div class="panel-body">
+                              <form role="form" action="/submitQ" method="post">
+                                  <div class="form-group">
+                                      <label for="problem">Problem</label>
+                                      <textarea class="form-control" name="content" rows="5"></textarea>
+                                  </div>
+                                  <button type="submit" class="btn btn-primary">Submit</button>
+                              </form>
+
+                          </div>
+                      </section>
                   </div>
-                </li>
-                <li>
-                  <div>
-                    <time>TIME</time> MESSAGE
-                  </div>
-                </li>
-                <li>
-                  <div>
-                    <time>TIME</time> MESSAGE
-                  </div>
-                </li>
-                <li>
-                  <div>
-                    <time>TIME</time> MESSAGE
-                  </div>
-                </li>
-                <li>
-                  <div>
-                    <time>TIME</time> MESSAGE
-                  </div>
-                </li>
-                <li>
-                  <div>
-                    <time>TIME</time> MESSAGE
-                  </div>
-                </li>                
-              </ul>
-            </section>
           </section>
       </section>
       <!--main content end-->
@@ -190,7 +169,6 @@
   <!-- container section start -->
 
     <!-- javascripts -->
-    <script src="/static/js/timeline.js"></script>    
     <script src="/static/js/jquery.js"></script>
     <script src="/static/js/jquery-ui-1.10.4.min.js"></script>
     <script src="/static/js/jquery-1.8.3.min.js"></script>
@@ -215,11 +193,11 @@
     <script src="/static/js/xcharts.min.js"></script>
     <script src="/static/js/jquery.autosize.min.js"></script>
     <script src="/static/js/jquery.placeholder.min.js"></script>
-    <script src="/static/js/gdp-data.js"></script>
+    <script src="/static/js/gdp-data.js"></script>  
     <script src="/static/js/morris.min.js"></script>
-    <script src="/static/js/sparklines.js"></script>
+    <script src="/static/js/sparklines.js"></script>  
     <script src="/static/js/charts.js"></script>
     <script src="/static/js/jquery.slimscroll.min.js"></script>
-
+ 
   </body>
 </html>

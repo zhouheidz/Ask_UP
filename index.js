@@ -13,6 +13,7 @@ const QResponse = require('./models').QResponse;
 const Problem = require('./models').Problem;
 const PResponse = require('./models').PResponse;
 const multer = require('multer');
+const moment = require('moment');
 app.use('/pictures', express.static('./uploads'));
 var upload = multer({dest: './uploads'});
 
@@ -156,6 +157,23 @@ app.post('/replyP', requireSignedIn, upload.array('photos', 10), function(req, r
 			return res.redirect('/home');
 		});
 		});
+});
+
+app.get('/getQ', function(req, res) {
+	var time1, time2;
+	Question.findOne({where: {user_email:req.user}}).then(function(user) {
+		console.log(user.timestamp);
+		time1 = user.timestamp;
+	}).then(function() {
+		console.log(moment().format());
+		time2 = moment().format();
+	}).then(function() {
+		if(time1<time2) {
+			console.log("time1 < time2");
+		} else {
+			console.log("time2 > time1");
+		}
+	});
 });
 
 function requireSignedIn(req, res, next) {

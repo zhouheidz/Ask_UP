@@ -50,13 +50,6 @@ app.get('/answerQ', function(req, res){
 	Question.findAll({
 		where: {resolved:'f'}
 	}).then(function(question) {
-		for(var i = 0; i < question.size(); i++) {
-			QResponse.findAll({
-				where:{id:question[i].id}
-			}).then(function(qresponse) {
-				qna[i] = {question:question[i].content, answer:qresponse.content}
-			});
-		}
 		res.render('answerQ.html', {
 			question:question
 		});
@@ -151,40 +144,56 @@ app.post('/submitP', requireSignedIn, function(req, res){
 });
 
 
-app.post('/replyQ', requireSignedIn, upload.array('photos', 10), function(req, res) {
+app.post('/replyQ', requireSignedIn, function(req, res) {
 	var email = req.user;
 	var content = req.body.content;
-	var resolved = req.body.resolved;
-	Question.findOne({where: {user_email: email}}).then(function(userQuestion){
-		return userQuestion.update({
-			resolved: resolved
-		}).then(function(){
-			return QResponse.create({
-				user_email: email,
-				q_id: userQuestion.id,
-				content: content,
-				image: req.files
-			}).then(function(){
-				req.flash('statusMessage', 'Response has been sent!');
-				return res.redirect('/home');
-			});
-		});
+
+	Question.findOne( {where: {user_email : email }}).then(function(user) {
+		user.update( { resolved : 't'})
 	});
+	
+	res.redirect('/home');
+	
 });
+// app.post('/replyQ', requireSignedIn, function(req, res) {
+// 	var email = req.user;
+// 	var content = req.body.content;
+// 	console.log('from form');
+// 	console.log(email);
+// 	console.log(content);
+// 	console.log(">>>>>end of form<<<<<<");
+// 	Question.findOne({where: {user_email: email}}).then(function(userQuestion){
+// 		userQuestion.update({
+// 			resolved: 't'
+// 		}).then(function(question){
+// 				console.log("q_id is: "+question.id);
+// 				console.log("content: "+content);
+// 				console.log("email: "+email);
+// 				QResponse.create({
+// 					user_email: email,
+// 					q_id: question.id,
+// 					content: content
+// 			}).then(function(success){
+// 				console.log("success")
+// 				req.flash('statusMessage', 'Response has been sent!');
+// 				return res.redirect('/home');
+// 			});
+// 		});
+// 	});
+// });
 
 
-app.post('/replyP', requireSignedIn, upload.array('photos', 10), function(req, res) {
+app.post('/replyP', requireSignedIn, function(req, res) {
 	var email = req.user;
 	var content = req.body.content;
 	Problem.findOne({where: {user_email: email}}).then(function(userProblem){
 		return userProblem.update({
-			resolved: resolved
+			resolved: 't'
 		}).then(function(){
 			return PResponse.create({
 				user_email: email,
 				p_id: userProblem.id,
-				content: content,
-				image: req.files
+				content: content
 			}).then(function(){
 				req.flash('statusMessage', 'Response has been sent!');
 				return res.redirect('/home');
@@ -197,23 +206,6 @@ app.post('/replyP', requireSignedIn, upload.array('photos', 10), function(req, r
 	//filter by category
 //get questions and qresponses with same email and q_id
 //get problems and presponses qith sane email and p_id
-
-app.get('/getQ', function(req, res) {
-	var time1, time2;
-	Question.findOne({where: {user_email:req.user}}).then(function(user) {
-		console.log(user.timestamp);
-		time1 = user.timestamp;
-	}).then(function() {
-		console.log(moment().format());
-		time2 = moment().format();
-	}).then(function() {
-		if(time1<time2) {
-			console.log("time1 < time2");
-		} else {
-			console.log("time2 > time1");
-		}
-	});
-});
 
 function requireSignedIn(req, res, next) {
     if (!req.session.currentUser) {

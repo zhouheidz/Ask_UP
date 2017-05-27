@@ -175,20 +175,22 @@
       <!--main content end-->
   </section>
   <!-- container section start -->
-<div class="modal fade" id="basicModal" tabindex="-3" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-body">
-              <label for="inputReply">Reply</label>
-              <textarea class="form-control" name="content" rows="5" required></textarea>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Send</button>
-            </div>
+<form method="post" action="/replyQ">
+  <div class="modal fade" id="basicModal" tabindex="-3" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-body">
+                <label for="inputReply">Reply</label>
+                <textarea class="form-control" name="content" rows="5" required></textarea>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <input type="submit" class="btn btn-primary"/>
+              </div>
+      </div>
     </div>
   </div>
-</div>
+</form>
 
     <!-- javascripts -->
     <script src="/static/js/jquery.js"></script>

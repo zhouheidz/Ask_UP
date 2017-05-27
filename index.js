@@ -44,6 +44,16 @@ app.get('/', function(req, res){
 	res.render('index.html', {
 	});
 });
+app.get('/inbox', function(req, res){
+	res.render('inbox.html', {
+	});
+});
+
+app.get('/faq', function(req, res){
+	res.render('faq.html', {
+	});
+});
+
 
 app.get('/answerQ', function(req, res){
 	var qna = {};
@@ -74,6 +84,7 @@ app.get('/answerP', requireSignedIn, function(req, res){
 		}
 	});
 });
+
 
 app.get('/home', requireSignedIn, function(req, res){
 	const email = req.session.currentUser;

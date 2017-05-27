@@ -33,13 +33,13 @@ app.get('/', function(request, response){
 	});
 });
 
-function requireSignedIn(req, res, next) {
-    if (!req.session.currentUser) {
-        return res.redirect('/');
-    }
-    next();
-}
+// function requireSignedIn(req, res, next) {
+//     if (!req.session.currentUser) {
+//         return res.redirect('/');
+//     }
+//     next();
+// }
 
 app.listen(3000, function(request, response){
-	console.log('Server Listening');
+	console.log('Server Listening on port 3000');
 });

@@ -4,11 +4,12 @@ const User = require('../models').User;
 const router = new express.Router();
 
 router.get('/auth/google', passport.authenticate('google', { scope: [
-       'https://www.googleapis.com/auth/plus.login',
-       'https://www.googleapis.com/auth/userinfo.profile',
-       'https://www.googleapis.com/auth/userinfo.email',
-       'profile',
-       'email'
+       // 'https://www.googleapis.com/auth/plus.login',
+       // 'https://www.googleapis.com/auth/userinfo.profile',
+       // 'https://www.googleapis.com/auth/userinfo.email',
+       // 'profile',
+       // 'email'
+       'profile'
        ] 
 }));
 
@@ -17,6 +18,7 @@ router.get('/auth/google/callback',
         failureRedirect: '/'
     }),
     function(req, res) {
+        console.log(req);
         req.session.currentUser = req.user.displayName;
         // res.redirect('/');
         res.send(200);

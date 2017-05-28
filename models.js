@@ -17,7 +17,7 @@ const User = database.define('users', {
 		allowNull: false
 	},createdAt: {
         type: Sequelize.DATE,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')	
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
     },
     updatedAt: {
         type: Sequelize.DATE,
@@ -116,7 +116,7 @@ const Problem = database.define('problems',{
     },
     category: {
     	type: Sequelize.ENUM,
-    	values: ['org-related', 'course-related', 'facility-related', 
+    	values: ['org-related', 'course-related', 'facility-related',
     			'admin-related', 'others'],
     	allowNull: false
     },
@@ -181,6 +181,8 @@ const Faq = database.define('faq', {
         type: Sequelize.TEXT,
         allowNull: false
     }
+}, {
+	timestamps: true
 });
 
 database.sync();

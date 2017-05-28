@@ -62,10 +62,11 @@ app.get('/faq', requireSignedIn,function(req, res){
 		// for(var i = 0; i < faq.length; i++) {
 		// 	faqs[i] = {content:faqs[i].content, reply:faq.reply}
 		// }
-		// res.render('faq.html', {
-		// 	content:content,
-		// 	reply: reply
-		// });
+		res.render('faq.html', {
+			// content:content,
+			// reply: reply
+			faqObj:faqObj
+		});
 	});
 });
 

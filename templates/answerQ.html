@@ -112,10 +112,11 @@
       </aside>
       <!--sidebar end-->
 
+{%for question in question%}  
       <!--main content start-->
       <section id="main-content">
           <section class="wrapper">
-             {%for question in question%}  
+             
               <div class="row">
                   <div class="col-lg-6">                
                     <section class="panel">
@@ -123,7 +124,7 @@
                               <div class="panel-heading">
                                   <h4 class="panel-title">
                                       <a class="accordion-toggle" href="#collapseOne">
-                                          SC MEMBER replied to you Question / Post #1 
+                                          SC MEMBER replied to you Question / Post {{question.id}}
                                       </a>
                                   </h4>
                               </div>
@@ -140,8 +141,7 @@
                           </div>                     
                     </section>                                          
               </div>          
-            </div>
-              {%endfor%}  
+            </div>  
           </section>
       </section>
 
@@ -149,6 +149,7 @@
   </section>
   <!-- container section start -->
 <form method="post" action="/replyQ">
+<input type="hidden" id="qid" name="qid" value="{{question.id}}"/>
   <div class="modal fade" id="basicModal" tabindex="-3" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
       <div class="modal-dialog">
           <div class="modal-content">
@@ -164,6 +165,7 @@
     </div>
   </div>
 </form>
+{%endfor%}
 
     <!-- javascripts -->
     <script src="/static/js/jquery.js"></script>

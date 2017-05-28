@@ -158,40 +158,30 @@ app.post('/submitP', requireSignedIn, function(req, res){
 app.post('/replyQ', requireSignedIn, function(req, res) {
 	var email = req.user;
 	var content = req.body.content;
-
-	Question.findOne( {where: {user_email : email }}).then(function(user) {
-		user.update( { resolved : 't'})
+	var id = req.body.qid;
+	
+	Question.findOne({
+		where: {id : id }
+	}).then(function(question) {
+		question.update({resolved : 't'});
+		console.log('resolved');
+	}).then(function(){
+		console.log('creating');
+		QResponse.create({
+			user_email:email,
+			q_id:id,
+			content:content,
+			image:'null'
+		}).then(function(){
+			console.log('created');
+			req.flash('statusMessage', 'Response has been sent!');
+			return res.redirect('/answerQ');
+		});
 	});
 	
-	res.redirect('/home');
+	// res.redirect('/answerQ');
 	
 });
-// app.post('/replyQ', requireSignedIn, function(req, res) {
-// 	var email = req.user;
-// 	var content = req.body.content;
-// 	console.log('from form');
-// 	console.log(email);
-// 	console.log(content);
-// 	console.log(">>>>>end of form<<<<<<");
-// 	Question.findOne({where: {user_email: email}}).then(function(userQuestion){
-// 		userQuestion.update({
-// 			resolved: 't'
-// 		}).then(function(question){
-// 				console.log("q_id is: "+question.id);
-// 				console.log("content: "+content);
-// 				console.log("email: "+email);
-// 				QResponse.create({
-// 					user_email: email,
-// 					q_id: question.id,
-// 					content: content
-// 			}).then(function(success){
-// 				console.log("success")
-// 				req.flash('statusMessage', 'Response has been sent!');
-// 				return res.redirect('/home');
-// 			});
-// 		});
-// 	});
-// });
 
 
 app.post('/replyP', requireSignedIn, function(req, res) {

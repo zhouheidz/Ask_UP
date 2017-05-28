@@ -3713,7 +3713,9 @@ div[data-role="editor-toolbar"] {
 
 .badge.bg-important {
 
-    background: #00a0df;
+    background: #fff;
+
+    color: #000;
 
     font-family: 'Lato', sans-serif;
 
@@ -4125,7 +4127,7 @@ ul.ft-link li a {
 
 ul.ft-link li a:hover, ul.ft-link li.active a {
 
-    color: #00a0df;
+    color: #fff;
 
 }
 
@@ -7859,7 +7861,7 @@ ul.amounts li {
 
 input:focus:invalid:focus, textarea:focus:invalid:focus, select:focus:invalid:focus, .form-validate .form-group input.error , .form-validate .form-group textarea.error{
 
-    border-color: #00a0df !important;
+    border-color: #fff !important;
 
 }
 

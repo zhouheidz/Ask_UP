@@ -70,6 +70,11 @@ app.get('/orgrelated', function(req, res){
 	});
 });
 
+app.get('/others', function(req, res){
+	res.render('others.html', {
+	});
+});
+
 app.get('/courserelated', function(req, res){
 	res.render('courserelated.html', {
 	});

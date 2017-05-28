@@ -111,6 +111,7 @@ app.get('/answerP', requireSignedIn, function(req, res){
 app.get('/home', requireSignedIn, function(req, res){
 	const email = req.session.currentUser;
 	var name = req.user;
+	console.log("Inside home");
 	User.findOne( {where: {email:email}}).then(function(user) {
 		if(user.role === 'admin') {
 			console.log("admin");
@@ -118,7 +119,6 @@ app.get('/home', requireSignedIn, function(req, res){
 				user:user
 			});
 		} else {
-			console.log("not admin");
 			res.render('home.html', {
 				user:user
 			});
@@ -194,7 +194,7 @@ app.post('/replyQ', requireSignedIn, function(req, res) {
 	}).then(function(question) {
 		question.update({resolved : 't'});
 		console.log('resolved');
-	}).then(function(){
+	}).then(function(updateduser){
 		console.log('creating');
 		console.log("email"+email);
 		console.log("q_id"+id);
@@ -202,8 +202,7 @@ app.post('/replyQ', requireSignedIn, function(req, res) {
 		QResponse.create({
 			user_email:email,
 			q_id:id,
-			content:content,
-			image:'null'
+			content:content
 		}).then(function(){
 			console.log('created');
 			req.flash('statusMessage', 'Response has been sent!');

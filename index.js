@@ -50,13 +50,13 @@ app.get('/inbox', function(req, res){
 	});
 });
 
-app.get('/faq', function(req, res){
+app.get('/faq', retrieveSignedInUser,function(req, res){
 	var faqs = {};
 	var content = req.body.content;
 	var reply =  req.body.reply;
 
 	Faq.findAll({}).then(function(faq) {
-		console.log("faaqqq " + faq);
+		console.log("Faqs >> "+faq);
 		for(var i = 0; i < faq.length; i++) {
 			faqs[i] = {content:faqs[i].content, reply:faq.reply}
 		}

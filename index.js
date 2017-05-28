@@ -51,7 +51,7 @@ app.get('/inbox', function(req, res){
 });
 
 app.get('/faq', function(req, res){
-	var faq = {};
+	var faqs = {};
 	var content = req.body.content;
 	var reply =  req.body.reply;
 

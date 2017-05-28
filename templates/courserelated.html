@@ -21,6 +21,10 @@
     <link href="/static/stylesheets/style-responsive.css" rel="stylesheet" />
     <link href="/static/stylesheets/xcharts.min.css" rel=" stylesheet">
     <link href="/static/stylesheets/jquery-ui-1.10.4.min.css" rel="stylesheet">
+
+    <!-- Timeline -->
+    <link href="/static/stylesheets/timeline.css" rel="stylesheet">
+
   </head>
 
   <body>
@@ -33,16 +37,25 @@
             </div>
 
             <!--hi people-->
-            <a href="/signout" class="logo">HI <span class="lite">{{name}}</span></a>
+            <a href="" class="logo">HI <span class="lite">{{user.name}}</span></a>
             <!--end-->
 
             <div class="top-nav notification-row">
                 <!-- notificatoin dropdown start-->
                 <ul class="nav pull-right top-menu">
+
+                    <!-- inbox notificatoin start-->
+                    <li id="mail_notificatoin_bar" class="dropdown" >
+                        <a href="/inbox">
+                            <i class="icon-envelope-l"></i>
+                            <span class="badge bg-important">{5}</span>
+                        </a>
+                    </li>
+                    <!-- inbox notificatoin end -->
                     <!-- user login dropdown start-->
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="username">{{name}}</span>
+                            <span class="username">{{user.name}}</span>
                         </a>
                         <ul class="dropdown-menu extended logout">
                             <div class="log-arrow-up"></div>
@@ -50,7 +63,7 @@
                                 <a href="#"><i class="icon_mail_alt"></i> My Inbox</a>
                             </li>
                             <li>
-                                <a href="login.html"><i class="icon_key_alt"></i> Log Out</a>
+                                <a href="/signout"><i class="icon_key_alt"></i> Log Out</a>
                             </li>
                         </ul>
                     </li>
@@ -73,22 +86,24 @@
                       </a>
                   </li>
                   <li>
-                      <a class="" href="/answerQ">
+                      <a class="" href="/submitQ">
                           <i class="icon_document_alt"></i>
-                          <span>Answer Question</span>
+                          <span>Ask SC</span>
                       </a>
                   </li>
                   <li>
-                      <a class="" href="/answerP">
+                      <a class="" href="/submitP">
                           <i class="icon_desktop"></i>
-                          <span>Answer Problem</span>
+                          <span>Send Problem</span>
                       </a>
                   </li>
                   <li>
                       <a class="" href="/faq">
                           <i class="icon_documents_alt"></i>
                           <span>FAQ </span>
+
                       </a>
+
                   </li>
 
                   <li class="sub-menu">
@@ -105,6 +120,8 @@
                           <li><a class="" href="/">Others </a></li>
                       </ul>
                   </li>
+
+
               </ul>
               <!-- sidebar menu end-->
           </div>
@@ -121,17 +138,14 @@
                               <div class="panel-heading">
                                   <h4 class="panel-title">
                                       <a class="accordion-toggle" href="#collapseOne">
-                                          POST #1 
+                                          Question / Problem # 1
                                       </a>
                                   </h4>
                               </div>
                               <div id="collapseOne" class="panel-collapse collapse in">
                                   <div class="panel-body">
-                                      PROBLEM
-                                      <br><br>
-                                  <a href="#" class="btn btn-primary" 
-                                     data-toggle="modal" 
-                                     data-target="#basicModal">Reply</a>                                                                           
+                                      ANSQWER
+                                      <br>
                                   </div>
 
                               </div>
@@ -141,26 +155,12 @@
             </div>
           </section>
       </section>
-
       <!--main content end-->
   </section>
   <!-- container section start -->
-<div class="modal fade" id="basicModal" tabindex="-3" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-body">
-              <label for="inputReply">Reply</label>
-              <textarea class="form-control" name="content" rows="5" required></textarea>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Send</button>
-            </div>
-    </div>
-  </div>
-</div>
 
     <!-- javascripts -->
+    <script src="/static/js/timeline.js"></script>
     <script src="/static/js/jquery.js"></script>
     <script src="/static/js/jquery-ui-1.10.4.min.js"></script>
     <script src="/static/js/jquery-1.8.3.min.js"></script>
@@ -190,6 +190,6 @@
     <script src="/static/js/sparklines.js"></script>
     <script src="/static/js/charts.js"></script>
     <script src="/static/js/jquery.slimscroll.min.js"></script>
-    <script src="/static/js/message.js"></script>
+
   </body>
 </html>

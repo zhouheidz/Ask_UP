@@ -54,6 +54,20 @@ app.get('/faq', function(req, res){
 	});
 });
 
+app.get('/orgrelated', function(req, res){
+	res.render('orgrelated.html', {
+	});
+});
+
+app.get('/courserelated', function(req, res){
+	res.render('courserelated.html', {
+	});
+});
+app.get('/adminrelated', function(req, res){
+	res.render('adminrelated.html', {
+	});
+});
+
 
 app.get('/answerQ', function(req, res){
 	var qna = {};

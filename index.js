@@ -56,14 +56,16 @@ app.get('/faq', requireSignedIn,function(req, res){
 	var reply =  req.body.reply;
 
 	Faq.findAll({}).then(function(faq) {
-		console.log("Faqs >> "+faq);
-		for(var i = 0; i < faq.length; i++) {
-			faqs[i] = {content:faqs[i].content, reply:faq.reply}
-		}
-		res.render('faq.html', {
-			content:content,
-			reply: reply
-		});
+		var jsonString = JSON.stringify(faq);
+		var faqObj = JSON.parse(jsonString);
+		console.log(faqObj);
+		// for(var i = 0; i < faq.length; i++) {
+		// 	faqs[i] = {content:faqs[i].content, reply:faq.reply}
+		// }
+		// res.render('faq.html', {
+		// 	content:content,
+		// 	reply: reply
+		// });
 	});
 });
 

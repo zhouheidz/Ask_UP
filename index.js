@@ -93,11 +93,15 @@ app.get('/facilityrelated', function(req, res){
 
 app.get('/answerQ', function(req, res){
 	var qna = {};
+
 	Question.findAll({
 		where: {resolved:'f'}
 	}).then(function(question) {
-		res.render('answerQ.html', {
-			question:question
+		User.findOne( {where: {email:email}}).then(function(user) {
+			res.render('answerQ.html', {
+				user:user,
+				question:question
+			});
 		});
 	});
 });

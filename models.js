@@ -87,7 +87,7 @@ const QResponse = database.define('qresponses',{
     },
     image: {
     	type: Sequelize.ARRAY(Sequelize.STRING),
-    	allowNull: false
+    	allowNull: true
     }
 });
 

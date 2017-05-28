@@ -90,6 +90,23 @@ app.get('/facilityrelated', function(req, res){
 	});
 });
 
+app.get('/sc', function(req, res){
+	const email = req.session.currentUser;
+	var name = req.user;
+	console.log("Inside home");
+	User.findOne( {where: {email:email}}).then(function(user) {
+		if(user.role === 'admin') {
+			console.log("admin");
+			res.render('sc.html', {
+				user:user
+			});
+		} else {
+			res.render('home.html', {
+				user:user
+			});
+		}
+	});
+});
 
 app.get('/answerQ', function(req, res){
 	var qna = {};
@@ -105,6 +122,7 @@ app.get('/answerQ', function(req, res){
 		});
 	});
 });
+
 
 app.get('/answerP', requireSignedIn, function(req, res){
 	const email = req.session.currentUser;

@@ -52,10 +52,12 @@ app.get('/inbox', function(req, res){
 
 app.get('/faq', function(req, res){
 	var faq = {};
+	var content = req.body.content;
+	var reply =  req.body.reply;
 
 	Faq.findAll({}).then(function(faq) {
 		console.log("faaqqq " +faq);
-		for(var i = 0; i < faq.size(); i++) {
+		for(var i = 0; i < faq.length; i++) {
 			faqs[i] = {content:faqs[i].content, reply:faq.reply}
 		}
 		res.render('faq.html', {

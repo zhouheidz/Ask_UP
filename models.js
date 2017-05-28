@@ -84,13 +84,10 @@ const QResponse = database.define('qresponses',{
     content: {
     	type: Sequelize.TEXT,
     	allowNull: false
-<<<<<<< HEAD
-=======
     },
     image: {
     	type: Sequelize.ARRAY(Sequelize.STRING),
     	allowNull: true
->>>>>>> 424b1cae9a244be5da80c4111e8f54b153f30c7e
     }
 });
 
@@ -165,7 +162,7 @@ const PResponse = database.define('presponses',{
     	allowNull: false
     }
 });
-const Faq = database.define('faq', {
+const Faq = database.define('faqs', {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -179,11 +176,6 @@ const Faq = database.define('faq', {
     reply: {
         type: Sequelize.TEXT,
         allowNull: false
-    },
-    timestamp: {
-        type: Sequelize.DATE,
-        allowNull: false,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
     }
 }, {
 	timestamps: true
@@ -196,7 +188,4 @@ module.exports.Question = Question;
 module.exports.QResponse = QResponse;
 module.exports.Problem = Problem;
 module.exports.PResponse = PResponse;
-<<<<<<< HEAD
 module.exports.Faq = Faq;
-=======
->>>>>>> 424b1cae9a244be5da80c4111e8f54b153f30c7e

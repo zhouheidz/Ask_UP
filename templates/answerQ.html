@@ -21,7 +21,7 @@
     <link href="/static/stylesheets/style-responsive.css" rel="stylesheet" />
     <link href="/static/stylesheets/xcharts.min.css" rel=" stylesheet">
     <link href="/static/stylesheets/jquery-ui-1.10.4.min.css" rel="stylesheet">
-
+  
   </head>
 
   <body>
@@ -43,7 +43,7 @@
                     <!-- user login dropdown start-->
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="username">{{user.name}}</span>
+                            <span class="username">{{name}}</span>
                         </a>
                         <ul class="dropdown-menu extended logout">
                             <div class="log-arrow-up"></div>
@@ -68,7 +68,7 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu">
                   <li class="active">
-                      <a class="" href="/sc">
+                      <a class="" href="/home">
                           <i class="icon_house_alt"></i>
                           <span>Home</span>
                       </a>
@@ -112,13 +112,12 @@
       </aside>
       <!--sidebar end-->
 
-{%for question in question%}
+{%for question in question%} 
       <!--main content start-->
       <section id="main-content">
           <section class="wrapper">
-
               <div class="row">
-                  <div class="col-lg-6">
+                  <div class="col-lg-7">                                   
                     <section class="panel">
                           <div class="panel panel-default">
                               <div class="panel-heading">
@@ -130,18 +129,18 @@
                               </div>
                               <div id="collapseOne" class="panel-collapse collapse in">
                                   <div class="panel-body">
-                                      {{question.content}}
+                                      {{question.content}} 
                                       <br><br>
-                                  <a href="#" class="btn btn-primary"
-                                     data-toggle="modal"
-                                     data-target="#basicModal">Reply</a>
+                                  <a href="#" class="btn btn-primary" 
+                                     data-toggle="modal" 
+                                     data-target="#basicModal">Reply</a>                                                                           
                                   </div>
 
                               </div>
-                          </div>
-                    </section>
-              </div>
-            </div>
+                          </div>                     
+                    </section>                                                            
+              </div>          
+            </div>  
           </section>
       </section>
 
@@ -165,8 +164,7 @@
     </div>
   </div>
 </form>
-{%endfor%}
-
+{%endfor%}  
     <!-- javascripts -->
     <script src="/static/js/jquery.js"></script>
     <script src="/static/js/jquery-ui-1.10.4.min.js"></script>

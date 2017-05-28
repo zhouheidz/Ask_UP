@@ -67,6 +67,10 @@ app.get('/adminrelated', function(req, res){
 	res.render('adminrelated.html', {
 	});
 });
+app.get('/facilityrelated', function(req, res){
+	res.render('adminrelated.html', {
+	});
+});
 
 
 app.get('/answerQ', function(req, res){

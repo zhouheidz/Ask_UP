@@ -46,8 +46,14 @@ app.get('/', function(req, res){
 	});
 });
 app.get('/inbox', requireSignedIn,function(req, res){
-	res.render('inbox.html', {
+	const email = req.session.currentUser;
+	User.findOne({ where: { email: email } }).then(function(user) {
+		console.log("name is: "+user.name);
+		res.render('inbox.html', {
+			user: user
+		});
 	});
+
 });
 
 app.get('/faq', requireSignedIn,function(req, res){
@@ -75,25 +81,50 @@ app.get('/faq', requireSignedIn,function(req, res){
 });
 
 app.get('/orgrelated', function(req, res){
-	res.render('orgrelated.html', {
+	const email = req.session.currentUser;
+	User.findOne({ where: { email: email } }).then(function(user) {
+		console.log("name is: "+user.name);
+		res.render('orgrelated.html', {
+			user: user
+		});
 	});
 });
 
 app.get('/others', function(req, res){
-	res.render('others.html', {
+	const email = req.session.currentUser;
+	User.findOne({ where: { email: email } }).then(function(user) {
+		console.log("name is: "+user.name);
+		res.render('others.html', {
+			user: user
+		});
 	});
 });
 
 app.get('/courserelated', function(req, res){
-	res.render('courserelated.html', {
+	const email = req.session.currentUser;
+	User.findOne({ where: { email: email } }).then(function(user) {
+		console.log("name is: "+user.name);
+		res.render('courserelated.html', {
+			user: user
+		});
 	});
 });
 app.get('/adminrelated', function(req, res){
-	res.render('adminrelated.html', {
+	const email = req.session.currentUser;
+	User.findOne({ where: { email: email } }).then(function(user) {
+		console.log("name is: "+user.name);
+		res.render('adminrelated.html', {
+			user: user
+		});
 	});
 });
 app.get('/facilityrelated', function(req, res){
-	res.render('adminrelated.html', {
+	const email = req.session.currentUser;
+	User.findOne({ where: { email: email } }).then(function(user) {
+		console.log("name is: "+user.name);
+		res.render('facilityrelated.html', {
+			user: user
+		});
 	});
 });
 

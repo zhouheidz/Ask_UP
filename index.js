@@ -45,25 +45,27 @@ app.get('/', function(req, res){
 	res.render('index.html', {
 	});
 });
-app.get('/inbox', function(req, res){
+app.get('/inbox', requireSignedIn,function(req, res){
 	res.render('inbox.html', {
 	});
 });
 
-app.get('/faq', function(req, res){
+app.get('/faq', requireSignedIn,function(req, res){
 	var faqs = {};
 	var content = req.body.content;
 	var reply =  req.body.reply;
 
 	Faq.findAll({}).then(function(faq) {
-		console.log("faaqqq " + faq);
-		for(var i = 0; i < faq.length; i++) {
-			faqs[i] = {content:faqs[i].content, reply:faq.reply}
-		}
-		res.render('faq.html', {
-			content:content,
-			reply: reply
-		});
+		var jsonString = JSON.stringify(faq);
+		var faqObj = JSON.parse(jsonString);
+		console.log(faqObj);
+		// for(var i = 0; i < faq.length; i++) {
+		// 	faqs[i] = {content:faqs[i].content, reply:faq.reply}
+		// }
+		// res.render('faq.html', {
+		// 	content:content,
+		// 	reply: reply
+		// });
 	});
 });
 

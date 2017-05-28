@@ -173,7 +173,7 @@ app.post('/replyQ', requireSignedIn, function(req, res) {
 	var email = req.user;
 	var content = req.body.content;
 	var id = req.body.qid;
-	
+
 	Question.findOne({
 		where: {id : id }
 	}).then(function(question) {
@@ -181,6 +181,9 @@ app.post('/replyQ', requireSignedIn, function(req, res) {
 		console.log('resolved');
 	}).then(function(){
 		console.log('creating');
+		console.log("email"+email);
+		console.log("q_id"+id);
+		console.log("content:"+content);
 		QResponse.create({
 			user_email:email,
 			q_id:id,
@@ -192,9 +195,9 @@ app.post('/replyQ', requireSignedIn, function(req, res) {
 			return res.redirect('/answerQ');
 		});
 	});
-	
+
 	// res.redirect('/answerQ');
-	
+
 });
 
 

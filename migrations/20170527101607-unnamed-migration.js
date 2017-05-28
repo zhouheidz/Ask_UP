@@ -10,6 +10,10 @@ module.exports = {
       email: 'croxas@up.edu.ph',
       name: 'Claire Rojas',
       role: 'admin'
+    },{
+      email: 'kamarinduque@up.edu.ph',
+      name: 'Kelly A. Marinduque',
+      role: 'admin'
     }, {
       email: 'huchiu@up.edu.ph',
       name: 'Heidi Angela U. Chiu',

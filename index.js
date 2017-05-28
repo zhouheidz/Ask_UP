@@ -12,6 +12,7 @@ const Question = require('./models').Question;
 const QResponse = require('./models').QResponse;
 const Problem = require('./models').Problem;
 const PResponse = require('./models').PResponse;
+const Faq = require('./models').Faq;
 const multer = require('multer');
 const moment = require('moment');
 app.use('/pictures', express.static('./uploads'));
@@ -50,7 +51,17 @@ app.get('/inbox', function(req, res){
 });
 
 app.get('/faq', function(req, res){
-	res.render('faq.html', {
+	var faq = {};
+
+	Faq.findAll({}).then(function(faq) {
+		console.log("faaqqq " +faq);
+		for(var i = 0; i < faq.size(); i++) {
+			faqs[i] = {content:faqs[i].content, reply:faq.reply}
+		}
+		res.render('faq.html', {
+			content:content,
+			reply: reply
+		});
 	});
 });
 

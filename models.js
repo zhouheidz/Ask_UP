@@ -84,10 +84,6 @@ const QResponse = database.define('qresponses',{
     content: {
     	type: Sequelize.TEXT,
     	allowNull: false
-    },
-    image: {
-    	type: Sequelize.ARRAY(Sequelize.STRING),
-    	allowNull: false
     }
 });
 
@@ -145,7 +141,7 @@ const PResponse = database.define('presponses',{
             key: 'email'
         }
 	},
-	q_id:{
+	p_id:{
 		type: Sequelize.INTEGER,
 		references: {
             model: 'problems',
@@ -159,10 +155,6 @@ const PResponse = database.define('presponses',{
     },
     content: {
     	type: Sequelize.TEXT,
-    	allowNull: false
-    },
-    image: {
-    	type: Sequelize.STRING,
     	allowNull: false
     }
 });
@@ -180,6 +172,11 @@ const Faq = database.define('faq', {
     reply: {
         type: Sequelize.TEXT,
         allowNull: false
+    },
+    timestamp: {
+        type: Sequelize.DATE,
+        allowNull: false,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
     }
 });
 
@@ -190,3 +187,4 @@ module.exports.Question = Question;
 module.exports.QResponse = QResponse;
 module.exports.Problem = Problem;
 module.exports.PResponse = PResponse;
+module.exports.Faq = Faq;

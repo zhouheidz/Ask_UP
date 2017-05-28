@@ -65,6 +65,24 @@ app.get('/faq', function(req, res){
 	});
 });
 
+app.get('/orgrelated', function(req, res){
+	res.render('orgrelated.html', {
+	});
+});
+
+app.get('/courserelated', function(req, res){
+	res.render('courserelated.html', {
+	});
+});
+app.get('/adminrelated', function(req, res){
+	res.render('adminrelated.html', {
+	});
+});
+app.get('/facilityrelated', function(req, res){
+	res.render('adminrelated.html', {
+	});
+});
+
 
 app.get('/answerQ', function(req, res){
 	var qna = {};
@@ -170,7 +188,7 @@ app.post('/replyQ', requireSignedIn, function(req, res) {
 	var email = req.user;
 	var content = req.body.content;
 	var id = req.body.qid;
-	
+
 	Question.findOne({
 		where: {id : id }
 	}).then(function(question) {
@@ -178,6 +196,9 @@ app.post('/replyQ', requireSignedIn, function(req, res) {
 		console.log('resolved');
 	}).then(function(){
 		console.log('creating');
+		console.log("email"+email);
+		console.log("q_id"+id);
+		console.log("content:"+content);
 		QResponse.create({
 			user_email:email,
 			q_id:id,
@@ -189,9 +210,9 @@ app.post('/replyQ', requireSignedIn, function(req, res) {
 			return res.redirect('/answerQ');
 		});
 	});
-	
+
 	// res.redirect('/answerQ');
-	
+
 });
 
 

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <link rel="shortcut icon" href="img/favicon.png">
 
-    <title>UPSCET</title>
+    <title>Hoy</title>
 
     <!-- Bootstrap CSS -->
     <link href="/static/stylesheets/bootstrap.min.css" rel="stylesheet">
@@ -21,6 +21,10 @@
     <link href="/static/stylesheets/style-responsive.css" rel="stylesheet" />
     <link href="/static/stylesheets/xcharts.min.css" rel=" stylesheet">
     <link href="/static/stylesheets/jquery-ui-1.10.4.min.css" rel="stylesheet">
+
+    <!-- Timeline -->
+    <link href="/static/stylesheets/timeline.css" rel="stylesheet">
+
   </head>
 
   <body>
@@ -56,7 +60,10 @@
                         <ul class="dropdown-menu extended logout">
                             <div class="log-arrow-up"></div>
                             <li>
-                                <a href="/"><i class="icon_key_alt"></i> Log Out</a>
+                                <a href="#"><i class="icon_mail_alt"></i> My Inbox</a>
+                            </li>
+                            <li>
+                                <a href="/signout"><i class="icon_key_alt"></i> Log Out</a>
                             </li>
                         </ul>
                     </li>
@@ -124,39 +131,28 @@
       <!--main content start-->
       <section id="main-content">
           <section class="wrapper">
-                 <div class="col-lg-6">
-                      <section class="panel">
-                          <header class="panel-heading">
-                              Address a Problem
-                          </header>
-                          <div class="panel-body">
-                              <form role="form" action="/submitP" method="post">
-                                  <div class="form-group">
-                                      <label for="problem">Problem</label>
-                                      <textarea class="form-control" name="content" rows="5" required></textarea>
-                                      <label for="problem" >Category</label>
-                                      <select class="form-control input-sm m-bot15" id="category" name="category">
-                                          <option>org-related</option>
-                                          <option>course-related</option>
-                                          <option>facility-related</option>
-                                          <option>admin-related</option>
-                                          <option>others</option>
-                                      </select>
-                                      <div class="checkbox">
-                                          <label>
-                                              <input type="checkbox" value="" id="publicity" name="publicity">
-                                              Publicize Idenity ? (Note: If unselected, post will be considered to be submitted anonymously)
-                                          </label>
-                                      </div>
-
+              <div class="row">
+                  <div class="col-lg-6">                
+                    <section class="panel">
+                          <div class="panel panel-default">
+                              <div class="panel-heading">
+                                  <h4 class="panel-title">
+                                      <a class="accordion-toggle" href="#collapseOne">
+                                          Question / Problem # 1
+                                      </a>
+                                  </h4>
+                              </div>
+                              <div id="collapseOne" class="panel-collapse collapse in">
+                                  <div class="panel-body">
+                                      ANSQWER
+                                      <br>
                                   </div>
-                                  <button type="submit" class="btn btn-primary">Submit</button>
-                                  <p><br><br><b> {{messages.statusMessage}} </b></p>
-                              </form>
 
-                          </div>
-                      </section>
-                  </div>
+                              </div>
+                          </div>                     
+                    </section>                                          
+              </div>          
+            </div>
           </section>
       </section>
       <!--main content end-->
@@ -164,6 +160,7 @@
   <!-- container section start -->
 
     <!-- javascripts -->
+    <script src="/static/js/timeline.js"></script>
     <script src="/static/js/jquery.js"></script>
     <script src="/static/js/jquery-ui-1.10.4.min.js"></script>
     <script src="/static/js/jquery-1.8.3.min.js"></script>

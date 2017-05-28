@@ -17,7 +17,7 @@ const User = database.define('users', {
 		allowNull: false
 	},createdAt: {
         type: Sequelize.DATE,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')	
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
     },
     updatedAt: {
         type: Sequelize.DATE,
@@ -84,6 +84,13 @@ const QResponse = database.define('qresponses',{
     content: {
     	type: Sequelize.TEXT,
     	allowNull: false
+<<<<<<< HEAD
+=======
+    },
+    image: {
+    	type: Sequelize.ARRAY(Sequelize.STRING),
+    	allowNull: true
+>>>>>>> 424b1cae9a244be5da80c4111e8f54b153f30c7e
     }
 });
 
@@ -112,7 +119,7 @@ const Problem = database.define('problems',{
     },
     category: {
     	type: Sequelize.ENUM,
-    	values: ['org-related', 'course-related', 'facility-related', 
+    	values: ['org-related', 'course-related', 'facility-related',
     			'admin-related', 'others'],
     	allowNull: false
     },
@@ -178,6 +185,8 @@ const Faq = database.define('faq', {
         allowNull: false,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
     }
+}, {
+	timestamps: true
 });
 
 database.sync();
@@ -187,4 +196,7 @@ module.exports.Question = Question;
 module.exports.QResponse = QResponse;
 module.exports.Problem = Problem;
 module.exports.PResponse = PResponse;
+<<<<<<< HEAD
 module.exports.Faq = Faq;
+=======
+>>>>>>> 424b1cae9a244be5da80c4111e8f54b153f30c7e

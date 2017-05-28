@@ -97,7 +97,7 @@ app.get('/answerQ', function(req, res){
 	Question.findAll({
 		where: {resolved:'f'}
 	}).then(function(question) {
-		User.findOne( {where: {email:email}}).then(function(user) {
+		User.findOne( {where: {email:req.user}}).then(function(user) {
 			res.render('answerQ.html', {
 				user:user,
 				question:question

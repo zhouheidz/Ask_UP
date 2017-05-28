@@ -54,6 +54,7 @@ app.get('/faq', requireSignedIn,function(req, res){
 	var faqs = {};
 	var content = req.body.content;
 	var reply =  req.body.reply;
+	var email = req.user;
 
 	Faq.findAll({}).then(function(faq) {
 		var jsonString = JSON.stringify(faq);
@@ -62,10 +63,13 @@ app.get('/faq', requireSignedIn,function(req, res){
 		// for(var i = 0; i < faq.length; i++) {
 		// 	faqs[i] = {content:faqs[i].content, reply:faq.reply}
 		// }
-		res.render('faq.html', {
-			// content:content,
-			// reply: reply
-			faqObj:faqObj
+		User.findOne( {where: {email:email}}).then(function(user) {
+			res.render('faq.html', {
+				// content:content,
+				// reply: reply
+				user:user,
+				faqObj:faqObj
+			});
 		});
 	});
 });
